@@ -179,14 +179,9 @@ export const MachineModel: React.FC<MachineModelProps> = ({ axes, onCameraUpdate
                                   far={10} 
                                >
                                   {/* Visual Frustum (Cone) 
-                                      We want it to point along the camera's viewing direction (-Z).
-                                      Standard Cylinder geometry (Tip=0, Base=1.7) is built along Y axis from 0 to -Height.
-                                      
-                                      To align Negative Y (Geometry) with Negative Z (Camera View):
-                                      We need +90 degree X rotation.
-                                      RotX(90): (0, -1, 0) -> (0, 0, -1).
+                                      Reversed to -PI/2 as requested.
                                   */}
-                                  <group rotation={[Math.PI/2, 0, 0]}>
+                                  <group rotation={[-Math.PI/2, 0, 0]}>
                                       {/* Shifted so the Tip (0 radius) starts at the camera origin (0,0,0) */}
                                       <group position={[0, -1.125, 0]}>
                                           <mesh rotation={[0, Math.PI/4, 0]}>
