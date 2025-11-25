@@ -161,18 +161,19 @@ export const MachineModel: React.FC<MachineModelProps> = ({ axes, onCameraUpdate
                                </Box>
                                
                                {/* Lens Housing */}
-                               <Cylinder args={[0.08, 0.08, 0.1]} rotation={[Math.PI/2, 0, 0]} position={[0, -0.1, 0]}>
+                               {/* Corrected to point DOWN (Vertical Y) to match camera direction */}
+                               <Cylinder args={[0.08, 0.08, 0.1]} position={[0, -0.15, 0]}>
                                   <meshStandardMaterial color="#222" />
                                </Cylinder>
 
                                {/* Virtual Camera Logic 
                                    Camera looks down -Z axis in its local frame.
-                                   Rotation changed from Math.PI/2 to -Math.PI/2 per user request.
+                                   Rotation -Math.PI/2 ( -90 deg) around X axis makes Local -Z align with World -Y (Down).
                                */}
                                <PerspectiveCamera 
                                   ref={camRef} 
                                   makeDefault={false} 
-                                  position={[0, -0.15, 0]} 
+                                  position={[0, -0.2, 0]} 
                                   rotation={[-Math.PI/2, 0, 0]} 
                                   fov={75} 
                                   near={0.1} 
@@ -180,13 +181,9 @@ export const MachineModel: React.FC<MachineModelProps> = ({ axes, onCameraUpdate
                                >
                                   {/* Visual Frustum (Cone) */}
                                   <group rotation={[-Math.PI/2, 0, 0]}>
-                                      {/* Shifted so the Tip (0 radius) starts at the camera origin (0,0,0) */}
+                                      {/* Shifted so the Tip (0 radius) starts at the camera origin */}
                                       <group position={[0, -1.125, 0]}>
                                           <mesh rotation={[0, Math.PI/4, 0]}>
-                                              {/* CylinderGeometry(radiusTop, radiusBottom, height, ...) 
-                                                  Top=0 (Tip), Bottom=1.7 (Base).
-                                                  Default cylinder goes +Y to -Y. 
-                                              */}
                                               <cylinderGeometry args={[0, 1.7, 2.25, 4, 1, true]} />
                                               <meshBasicMaterial color="cyan" transparent opacity={0.1} side={THREE.DoubleSide} depthWrite={false} />
                                           </mesh>
