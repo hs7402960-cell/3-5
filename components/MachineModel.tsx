@@ -168,13 +168,13 @@ export const MachineModel: React.FC<MachineModelProps> = ({ axes, onCameraUpdate
 
                                {/* Virtual Camera Logic 
                                    Camera looks down -Z axis in its local frame.
-                                   Rotation Math.PI/2 ( 90 deg) around X axis makes Local -Z align with World -Y (Down).
+                                   Rotation -Math.PI/2 (-90 deg) around X axis makes Local -Z align with World -Y (Down).
                                */}
                                <PerspectiveCamera 
                                   ref={camRef} 
                                   makeDefault={false} 
                                   position={[0, -0.2, 0]} 
-                                  rotation={[Math.PI/2, 0, 0]} 
+                                  rotation={[-Math.PI/2, 0, 0]} 
                                   fov={75} 
                                   near={0.1} 
                                   far={10} 

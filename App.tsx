@@ -7,6 +7,7 @@ import * as THREE from 'three';
 import { MachineModel } from './components/MachineModel';
 import { ScannedObject } from './components/ScannedObject';
 import { ControlPanel } from './components/ControlPanel';
+import { AdvicePanel } from './components/AdvicePanel';
 import { Axes } from './types';
 
 const App: React.FC = () => {
@@ -172,6 +173,9 @@ const App: React.FC = () => {
            </div>
         </div>
       </div>
+
+      {/* AI Advice Panel */}
+      <AdvicePanel defaultPrompt="How should I calibrate the hand-eye relationship for this 5-axis setup?" />
 
       {/* 3D Viewport */}
       <div className="flex-1 h-full">
