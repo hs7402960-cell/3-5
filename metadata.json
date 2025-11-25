@@ -1,0 +1,5 @@
+{
+  "name": "5-Axis ScanSim & Engineer",
+  "description": "A 3D simulation of a 5-axis CNC laser scanner with RGB-D camera integration, featuring real-time kinematic visualization, point cloud stitching simulation, and an AI engineering assistant for technical guidance.",
+  "requestFramePermissions": []
+}
